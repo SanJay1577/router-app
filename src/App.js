@@ -2,15 +2,21 @@
 import { Route, Switch, useHistory } from 'react-router-dom';
 import './App.css';
 import About from './Pages/About';
-import Contact from './Pages/Contact';
 import Home from './Pages/Home';
 import { Skills } from './Pages/Skills';
+import Userdetails from './Pages/UserDetails';
 
 function App() {
   //use history will help to navigate to the specific route
   const history = useHistory();
   return (
     <div className="App">
+      <div>
+        <button onClick={()=>history.goForward()}
+        > -&gt;</button>
+        <button onClick={()=>history.goBack()}
+        >&lt;-</button>
+      </div>
       <div className='nav-btn'>
 
         <button
@@ -31,12 +37,6 @@ function App() {
           Skills
         </button>
 
-        <button
-        onClick={()=>history.push("/contact")}
-        >
-          Contact
-        </button>
-
       </div>
       <Switch>
         <Route exact path ="/">
@@ -51,9 +51,9 @@ function App() {
              <Skills/>
           </Route>
 
-          <Route path="/contact">
+          <Route path="/user/:id">
 
-          <Contact/>
+          <Userdetails/>
       
           </Route>
 
