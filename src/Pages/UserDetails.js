@@ -1,25 +1,30 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
+
 
 const Userdetails = () => {
-    const {id} = useParams(); 
-    const [user, setUser] = useState([])
 
- useEffect(()=> {
-      async function getUserDetails () {
-          const response = await fetch(`https://619e6ef57f09d50017fd2b3e.mockapi.io/users/${id}`, {
-              method:"GET"
+  const [student, setStudent] = useState([]);
+ 
+ const {id} = useParams();
 
-          }); 
-          const data = await response.json(); 
-          setUser(data);
-          console.log(user)
-      }
+ const history = useHistory();
 
-      getUserDetails();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+ useEffect(() => {
+const getUserDetails = async () =>{
+  const respose = await fetch(`https://619e6ef57f09d50017fd2b3e.mockapi.io/users/${id}`, {
+    method :"GET",
+  }); 
+  const data = await respose.json();
+  setStudent(data);
 
+}
+getUserDetails(); 
+
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [])
+
+ 
    
   
 
@@ -27,7 +32,17 @@ const Userdetails = () => {
   return (
     <div>
         <h1>Userdetails</h1>
-        <h2>Hi guys welcome to the information of {id}</h2>
+        <div>
+          <h1> Name : {student.name}</h1>
+           <h3>City : {student.city}</h3>
+           <h3>State : {student.state}</h3>
+           <h3>Expected Salary Range :{student.expected} LPA</h3>
+
+
+        </div>
+  <button onClick={()=> history.push("/")}>
+    Back to Home
+  </button>
       
     </div>
   )
