@@ -3,7 +3,9 @@ import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import './App.css';
 import About from './Pages/About';
 import Home from './Pages/Home';
+import LoginPage from './Pages/LoginPage';
 import NoPage from './Pages/NoPage';
+import SignupPage from './Pages/SignupPage';
 import { Skills } from './Pages/Skills';
 import Userdetails from './Pages/UserDetails';
 
@@ -21,7 +23,7 @@ function App() {
       <div className='nav-btn'>
 
         <button
-        onClick={()=>history.push("/")}
+        onClick={()=>history.push("/home")}
         >
           Home
         </button>
@@ -38,18 +40,44 @@ function App() {
           Skills
         </button>
 
+        <button
+        onClick={()=>history.push("/login")}
+        >
+          login
+        </button>
+
+
+
       </div>
       <Switch>
         <Route exact path ="/">
+           <h1> Welcome to the application please login/signup to continue </h1>
+        </Route>
+
+        <Route exact path ="/login">
+            <LoginPage/>
+        </Route>
+
+        <Route exact path ="/register">
+            <SignupPage/>
+        </Route>
+
+
+        <Route exact path ="/home">
             <Home/>
         </Route>
 
         <Route path="/about">
         <About/>
         </Route>
+
+        <Route path= "/Prime-apps">
+        <Skills/>
+        </Route>
           
           <Route path="/skills">
             <Redirect to ="/Prime-apps"/>
+    
           </Route>
 
           <Route path="/user/:id">
@@ -88,4 +116,8 @@ export default App;
 // step1 : Pass the path with :id <paramaters>
 // step2 :  get the id or paramters using useParam hook 
 // step 3: const {id} = useParams(); 
+
+
+//Authentication 
+
 
