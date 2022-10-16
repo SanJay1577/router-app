@@ -1,13 +1,14 @@
-
+import React, { lazy, Suspense } from 'react';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import './App.css';
-import About from './Pages/About';
+//import About from './Pages/About';
 import Home from './Pages/Home';
 import LoginPage from './Pages/LoginPage';
 import NoPage from './Pages/NoPage';
 import SignupPage from './Pages/SignupPage';
 import { Skills } from './Pages/Skills';
 import Userdetails from './Pages/UserDetails';
+const OptimizedAbout = lazy(()=>import('./Pages/About'))
 
 function App() {
   //use history will help to navigate to the specific route
@@ -22,7 +23,7 @@ function App() {
       </div>
       <div className='nav-btn'>
 
-        <button
+      <button
         onClick={()=>history.push("/home")}
         >
           Home
@@ -39,7 +40,6 @@ function App() {
         >
           Skills
         </button>
-
         <button
         onClick={()=>history.push("/login")}
         >
@@ -68,7 +68,12 @@ function App() {
         </Route>
 
         <Route path="/about">
-        <About/>
+ 
+
+         <Suspense fallback = {<div>Loading.......</div>}>
+       <OptimizedAbout/>
+        </Suspense> 
+
         </Route>
 
         <Route path= "/Prime-apps">

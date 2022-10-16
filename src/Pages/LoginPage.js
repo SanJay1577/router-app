@@ -17,6 +17,7 @@ const LoginPage = () => {
         setDatas(data);
 
 
+
     }
     getUserList();
   }, []); 
@@ -30,6 +31,7 @@ const LoginPage = () => {
         setError("Sorry you have entered incorrect credentials")
      } else {
         setError("");
+        localStorage.setItem("user-name", name); 
         history.push("/home");
      }
   }
