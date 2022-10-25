@@ -13,7 +13,7 @@ const Home = () => {
             }); 
             const data = await response.json(); 
             setUserName(localStorage.getItem("user-name"));
-      
+            console.log(data);
             setStudents(data); 
         }
         //authentication of your application...
