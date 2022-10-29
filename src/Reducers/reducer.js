@@ -41,3 +41,6 @@ export const reducer = (state, action) =>{
 
   //1. store will be changed as per the reducer    shop [hotel] [nv, veg, snacks , dessert[98]]
   // [prevalue -valu1 -> newvalue]
+
+// redux-loop
+// STORE - UI - ACTIONS - REDUCERS - STORE

@@ -9,6 +9,7 @@ import SignupPage from './Pages/SignupPage';
 import { Context } from './Pages/Context';
 import Userdetails from './Pages/UserDetails';
 import { reducer } from './Reducers/reducer';
+import Order from './Pages/Order';
 const OptimizedAbout = lazy(()=>import('./Pages/About')); 
 
 
@@ -48,6 +49,13 @@ console.log(state);
         >
           Context
         </button>
+
+        <button
+        onClick={()=>history.push("/orders")}
+        >
+          Orders
+        </button>
+
         <button
         onClick={()=>history.push("/login")}
         >
@@ -99,6 +107,10 @@ console.log(state);
 
           <Userdetails/>
       
+          </Route>
+
+          <Route path="/orders">
+             <Order/>
           </Route>
 
           <Route path ="**">
